@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТЭК Карго Транс | Таможенное оформление 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_КЛЮЧ&lang=ru_RU" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ШАПКА (glassmorphism + неон) -->
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo-area" id="logoArea">
+            <div class="logo-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <div class="logo-text">
+                <div class="logo-main">ТЭК Карго Транс</div>
+                <div class="logo-sub">Таможня будущего • с 1999</div>
+            </div>
+        </div>
+
+        <nav class="main-nav" id="mainNav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#" class="nav-link" data-page="calculator">Расчёт стоимости услуг</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Компания <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item" data-page="about">О компании</a>
+                        <a href="#" class="dropdown-item" data-page="digest">Дайджест ВЭД</a>
+                        <a href="#" class="dropdown-item" data-page="projects">Наши проекты</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Услуги <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu dropdown-menu-wide">
+                        <a href="#">Аутсорсинг ВЭД</a>
+                        <a href="#">Международные перевозки</a>
+                        <a href="#">Таможенный консалтинг</a>
+                        <a href="#">Склад временного хранения</a>
+                        <a href="#">Таможенный склад</a>
+                        <a href="#">Маркировка товаров</a>
+                        <a href="#">Таможенный брокер</a>
+                        <a href="#">Налоговый консалтинг</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Цены</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Терминалы</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-page="contacts">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <a href="#" class="btn-request">
+            <i class="fas fa-pen"></i> Заполнить заявку
+        </a>
+
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<!-- ГЕРОЙ-БЛОК -->
+<section class="hero" id="heroSection">
+    <div class="hero-particles"></div>
+    <div class="container hero-grid">
+        <div class="hero-content animate-fadeInUp">
+            <div class="hero-badge-new">#1 в России с 1999</div>
+            <h1 class="hero-title">
+                Таможенное оформление<br>
+                <span class="gradient-text">нового поколения</span>
+            </h1>
+            <p class="hero-subtitle">
+                Полный спектр финансовых, логистических и таможенных услуг. 
+                Организация поставок «под ключ» с использованием AI-технологий.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-file-pdf"></i> Презентация (PDF)
+                </a>
+                <a href="#" class="btn-secondary" data-page="contacts">
+                    <i class="fas fa-headset"></i> Связаться с нами
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">лет опыта</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">клиентов</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">надёжность</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual animate-fadeInUp" style="animation-delay: 0.2s;">
+            <div class="floating-card">
+                <div class="card-glow"></div>
+                <i class="fas fa-globe-americas"></i>
+                <h3>Аутсорсинг ВЭД</h3>
+                <p>Ваш надёжный партнёр в мире международной торговли</p>
+                <div class="card-badge">24/7 поддержка</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ХЛЕБНЫЕ КРОШКИ -->
+<div class="container" id="breadcrumbsContainer">
+    <div class="breadcrumbs">
+        <a href="#" id="breadHome">Главная</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="#" id="breadParent">Контакты</a>
+        <i class="fas fa-chevron-right"></i>
+        <span id="breadCurrent">Крекшино</span>
+    </div>
+</div>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<main class="container" id="mainContent">
+    <!-- Динамический контент -->
+</main>
+
+<!-- ПОДВАЛ -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-copyright">
+            © 1999–2026 ТЭК Карго Транс. Таможенное оформление будущего.
+        </div>
+        <div class="footer-links">
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Карта сайта</a>
+            <a href="#">Связаться с нами</a>
+        </div>
+    </div>
+</footer>
+
+<!-- МОДАЛЬНОЕ ОКНО -->
+<div class="modal" id="projectModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3 class="modal-title"></h3>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+</div>
+
+<script>
+    // ===== ДАННЫЕ ПРОЕКТОВ =====
+    const projectsData = [
+        {
+            image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=400&h=300&fit=crop',
+            number: '01',
+            title: 'Включение в ТРОИС',
+            shortDesc: 'Защита товарного знака при ввозе на территорию РФ.',
+            fullText: 'Поставленная задача – защита владельца товарного знака при ввозе на территорию РФ товаров с размещенным на них товарным знаком. Решение задачи осуществлялось путем включения товарных знаков в таможенный реестр объектов интеллектуальной собственности (ТРОИС), что позволило сократить ввоз контрафактных товаров (ООО «КУБ Евразия», АО Компания «Бакстер»).'
+        },
+        {
+            image: 'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?w=400&h=300&fit=crop',
+            number: '02',
+            title: 'Контрейлерные перевозки',
+            shortDesc: 'Выявление факторов развития контрейлерных перевозок.',
+            fullText: 'Поставленная задача – выявление факторов, сдерживающих развитие контрейлерных перевозок. Проведена тестовая перевозка транспортных средств с товаром. Выявлены несовершенство правовых норм, отсутствие форм документов, несогласованность действий ведомств.'
+        },
+        {
+            image: 'https://images.pexels.com/photos/6077326/pexels-photo-6077326.jpeg?w=400&h=300&fit=crop',
+            number: '03',
+            title: 'Представительство в суде',
+            shortDesc: 'Обжалование решений таможенных органов.',
+            fullText: 'Подтверждение сведений в декларации путем обжалования решений таможенных органов. Получены положительные решения для АО "Арконик СМЗ", АО «Бакстер», ООО Новэкс групп, ООО Агромаг, ООО Светосила М и других.'
+        },
+        {
+            image: 'https://images.pexels.com/photos/3840447/pexels-photo-3840447.jpeg?w=400&h=300&fit=crop',
+            number: '04',
+            title: 'Ввоз в уставный капитал',
+            shortDesc: 'Освобождение от уплаты таможенных пошлин.',
+            fullText: 'Ввоз товаров в уставный капитал с освобождением от уплаты пошлин. Осуществлен ввоз транспортных средств (седельных тягачей) и оборудования с освобождением от уплаты таможенных платежей.'
+        },
+        {
+            image: 'https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?w=400&h=300&fit=crop',
+            number: '05',
+            title: 'Лицензионные платежи',
+            shortDesc: 'Исключение платежей из таможенной стоимости.',
+            fullText: 'Доказана неправомочность включения лицензионных платежей в таможенную стоимость. Возвращены излишне уплаченные платежи на десятки миллионов рублей (АО «Колгейт-Палмолив», ООО «Гудиер РАША»).'
+        },
+        {
+            image: 'https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?w=400&h=300&fit=crop',
+            number: '06',
+            title: 'Классификация товаров',
+            shortDesc: 'Ввоз сложного технологического оборудования.',
+            fullText: 'Ввоз сложного оборудования отдельными партиями. Получены классификационные решения ФТС, осуществлен ввоз завода керамической плитки, углепогрузочного комплекса, терминала для зерна.'
+        },
+        {
+            image: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?w=400&h=300&fit=crop',
+            number: '07',
+            title: 'Предварительные решения',
+            shortDesc: 'Подтверждение спорных кодов ТН ВЭД.',
+            fullText: 'Подтверждение кодов товаров в соответствии с ТН ВЭД. Получены предварительные решения о классификации сложного оборудования, химических веществ, пищевых добавок.'
+        },
+        {
+            image: 'https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?w=400&h=300&fit=crop',
+            number: '08',
+            title: 'Таможенный склад',
+            shortDesc: 'Хранение комплектующих без уплаты пошлин.',
+            fullText: 'Производитель электроники разместил комплектующие на таможенном складе без уплаты пошлин. Система контроля доступа, видеонаблюдение, температурный контроль. Товары хранятся до 3 лет.'
+        },
+        {
+            image: 'https://images.pexels.com/photos/4226807/pexels-photo-4226807.jpeg?w=400&h=300&fit=crop',
+            number: '09',
+            title: 'Маркировка товаров',
+            shortDesc: 'Организация процесса маркировки.',
+            fullText: 'Создана «дорожная карта» для включения компании в Реестр владельцев таможенных складов. Запущен процесс маркировки товаров до выпуска в свободное обращение.'
+        }
+    ];
+
+    // ===== ДАННЫЕ ДАЙДЖЕСТА =====
+    // ===== ДАННЫЕ ДАЙДЖЕСТА (9 НОВОСТЕЙ) =====
+const digestNews = [
+    {
+        date: '20 июня 2023',
+        title: 'Правительство продлило и расширило эксперимент по выдаче лицензий и разрешений в упрощённом формате',
+        fullText: '<p>Эксперимент по упрощённой выдаче лицензий и разрешений продлится до 31 декабря 2024 года. Постановление Правительства РФ от 19.06.2023 N 1002 подписал Михаил Мишустин. Бизнес сможет получать на портале госуслуг более 400 видов разрешений. Сроки выдачи лицензии сокращены в три раза – с 45 до 15 рабочих дней.</p><p class="digest-source">Источник: ТАСС</p>'
+    },
+    {
+        date: '02 июня 2023',
+        title: 'Правительство РФ. Проект Постановления № 342 о внесении изменений в постановление от 26 марта 2020 г.',
+        fullText: '<p>Проект Постановления № 342 о внесении изменений в постановление Правительства РФ от 26 марта 2020 г. N 342 "О ставках и базе для исчисления таможенных сборов". Постановление вступает в силу по истечении 30 дней после официального опубликования.</p>'
+    },
+    {
+        date: '31 мая 2023',
+        title: 'Эксперимент по маркировке безалкогольных напитков пройдет с 1 июня по 31 августа 2023 года',
+        fullText: '<p>Постановление Правительства РФ от 29.05.2023 N 858 подписано Михаилом Мишустиным. Эксперимент распространяется на воды с добавками, напитки на основе сои, орехов, злаков, квас, соки, компоты и морсы. Участие добровольное и бесплатное.</p><p class="digest-source">Источник: Интерфакс</p>'
+    },
+    {
+        date: '23 мая 2023',
+        title: 'Дума обсудит 23 мая обращение в кабмин по транзиту фур из Польши через Россию',
+        fullText: '<p>Госдума обсудит обращение в правительство РФ по вопросу транзита через Россию фур из Польши. Первый вице-спикер Александр Жуков заявил об этом журналистам. Вячеслав Володин призвал прекратить проезд польских фур по территории России.</p><p class="digest-source">Источник: ТАСС</p>'
+    },
+    {
+        date: '04 мая 2023',
+        title: 'Грузоперевозчики РФ с товарами параллельного импорта начали объезжать Казахстан',
+        fullText: '<p>Российские грузоперевозчики с товарами параллельного импорта начали объезжать Казахстан. "Страна создает сложности на границе", — сообщил глава ассоциации "Грузавтотранс" Владимир Матягин. Теперь транспорт идет через Китай, Иран, Грузию, Азербайджан, Армению.</p><p class="digest-source">Источник: Известия</p>'
+    },
+    {
+        date: '12 апреля 2023',
+        title: 'Доля рубля в расчетах за экспорт в 2022 году сравнялась с долларом',
+        fullText: '<p>Доля рубля в расчетах за экспорт превысила 30%, сравнявшись с долларом и обогнав евро. Увеличению доли способствовал перевод оплаты за газ в рубли. Суммарный вес доллара и евро в расчетах составил менее 50%.</p><p class="digest-source">Источник: Российская газета</p>'
+    },
+    {
+        date: '22 марта 2023',
+        title: 'Госдума приняла закон, снимающий ответственность за перегруз с водителя',
+        fullText: '<p>Ответственность за превышение габаритов грузовика или перевес полностью возложена на владельцев транспорта. Законопроект N 765480-7 принят в третьем чтении. Максимальный штраф снижен с 500 до 400 тысяч рублей.</p><p class="digest-source">Источник: Фонтанка</p>'
+    },
+    {
+        date: '20 марта 2023',
+        title: 'Минсельхоз предложил механизм экспортной торговли сельхозпродукцией за рубли',
+        fullText: '<p>Минсельхоз подготовил проект указа о механизме экспортной торговли сельхозпродукцией за рубли. Национальный клиринговый центр открывает специальные рублевые счета типа "З" для допуска иностранных покупателей к биржевым торгам.</p><p class="digest-source">Источник: ТАСС</p>'
+    },
+    {
+        date: '04 марта 2023',
+        title: 'Российский экспорт в ЕС сократился более чем вдвое с марта по декабрь 2022 года',
+        fullText: '<p>Российский экспорт в страны ЕС сократился на 53% — с €21,8 млрд до €10,3 млрд. Снизилась доля России в импорте ЕС: по газу с 36% до 21%, по углю с 45% до 22%, по нефти с 28% до 21%.</p><p class="digest-source">Источник: ТАСС</p>'
+    }
+];
+    
+
+    // ===== ФУНКЦИИ КОНТЕНТА =====
+    function getCalculatorHTML() {
+    return `
+        <h1 class="page-title animate-fadeInUp">Расчёт стоимости услуг</h1>
+        <div class="calculator-card animate-fadeInUp" style="animation-delay: 0.1s;">
+            <p class="calculator-subtitle">
+                <i class="fas fa-clock"></i> 
+                Заполните форму и наши специалисты свяжутся с Вами в течение 3-х часов
+            </p>
+            
+            <form class="calculator-form" id="calculatorForm">
+                <!-- Основные поля -->
+                <div class="form-row">
+                    <div class="form-group animate-slideIn" style="animation-delay: 0.15s;">
+                        <label>Имя <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Иван Иванов" required>
+                            <span class="input-glow"></span>
+                        </div>
+                    </div>
+                    <div class="form-group animate-slideIn" style="animation-delay: 0.2s;">
+                        <label>Email <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="ivan@company.ru" required>
+                            <span class="input-glow"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group animate-slideIn" style="animation-delay: 0.25s;">
+                        <label>Организация</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-building"></i>
+                            <input type="text" placeholder="ООО «Компания»">
+                            <span class="input-glow"></span>
+                        </div>
+                    </div>
+                    <div class="form-group animate-slideIn" style="animation-delay: 0.3s;">
+                        <label>Телефон</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" placeholder="+7 (999) 123-45-67">
+                            <span class="input-glow"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Направление -->
+                <div class="form-section animate-fadeInUp" style="animation-delay: 0.35s;">
+                    <h3 class="section-title">
+                        <i class="fas fa-arrow-right"></i> Направление
+                    </h3>
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="direction" value="import">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Импорт</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="direction" value="export">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Экспорт</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Услуги -->
+                <div class="form-section animate-fadeInUp" style="animation-delay: 0.4s;">
+                    <h3 class="section-title">
+                        <i class="fas fa-cube"></i> Услуги
+                    </h3>
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="service" value="customs">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Тамож. оформление</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="service" value="storage">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Хранение</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="service" value="transit">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Транзит ВТП</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="service" value="phyto">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">ФитоВет контроль</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Вид транспорта -->
+                <div class="form-section animate-fadeInUp" style="animation-delay: 0.45s;">
+                    <h3 class="section-title">
+                        <i class="fas fa-truck"></i> Вид транспорта
+                    </h3>
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="transport" value="auto">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Автомобильный</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="transport" value="rail">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Железнодорожный</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Обработка груза -->
+                <div class="form-section animate-fadeInUp" style="animation-delay: 0.5s;">
+                    <h3 class="section-title">
+                        <i class="fas fa-boxes"></i> Обработка груза
+                    </h3>
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="handling" value="crossdock">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Кросс-докинг</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="handling" value="marking">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Маркировка</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="handling" value="repack">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Переупаковка</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="handling" value="pallet">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-label">Паллетирование</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Селекты -->
+                <div class="form-row">
+                    <div class="form-group animate-slideIn" style="animation-delay: 0.55s;">
+                        <label>Дата прибытия</label>
+                        <div class="input-wrapper select-wrapper">
+                            <i class="fas fa-calendar"></i>
+                            <select>
+                                <option>Выбрать дату прибытия</option>
+                                <option>Сегодня</option>
+                                <option>Завтра</option>
+                                <option>На этой неделе</option>
+                                <option>На следующей неделе</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="form-group animate-slideIn" style="animation-delay: 0.6s;">
+                        <label>Тип груза</label>
+                        <div class="input-wrapper select-wrapper">
+                            <i class="fas fa-tag"></i>
+                            <select>
+                                <option>Выбрать тип груза</option>
+                                <option>Генеральный груз</option>
+                                <option>Опасный груз</option>
+                                <option>Скоропортящийся</option>
+                                <option>Негабаритный</option>
+                                <option>Наливной</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Вес и количество -->
+                <div class="form-row">
+                    <div class="form-group animate-slideIn" style="animation-delay: 0.65s;">
+                        <label>Вес груза / кг <span class="required">*</span></label>
+                        <div class="input-wrapper number-input-wrapper">
+                            <i class="fas fa-weight-scale"></i>
+                            <input type="number" min="0" value="0" required>
+                            <div class="number-controls">
+                                <button type="button" class="number-up"><i class="fas fa-plus"></i></button>
+                                <button type="button" class="number-down"><i class="fas fa-minus"></i></button>
+                            </div>
+                            <span class="input-glow"></span>
+                        </div>
+                    </div>
+                    <div class="form-group animate-slideIn" style="animation-delay: 0.7s;">
+                        <label>Количество паллет / мест <span class="required">*</span></label>
+                        <div class="input-wrapper number-input-wrapper">
+                            <i class="fas fa-pallet"></i>
+                            <input type="number" min="0" value="0" required>
+                            <div class="number-controls">
+                                <button type="button" class="number-up"><i class="fas fa-plus"></i></button>
+                                <button type="button" class="number-down"><i class="fas fa-minus"></i></button>
+                            </div>
+                            <span class="input-glow"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Описание товаров -->
+                <div class="form-section animate-fadeInUp" style="animation-delay: 0.75s;">
+                    <label>Описание товаров <span class="required">*</span></label>
+                    <div class="input-wrapper textarea-wrapper">
+                        <i class="fas fa-align-left"></i>
+                        <textarea rows="3" placeholder="Код или группа ТН ВЭД, наименование товара..."></textarea>
+                        <span class="input-glow"></span>
+                    </div>
+                </div>
+                
+                <!-- Загрузка документов -->
+                <div class="form-section animate-fadeInUp" style="animation-delay: 0.8s;">
+                    <label>Загрузка документов</label>
+                    <div class="file-upload-wrapper">
+                        <label class="file-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Перетащите файлы или нажмите для выбора</span>
+                            <input type="file" multiple>
+                        </label>
+                        <p class="file-hint">Дополнительные сведения (пакинг лист, инвойс, каталог, сертификат, паспорт качества и др.)</p>
+                    </div>
+                </div>
+                
+                <!-- Кнопка отправки -->
+                <div class="form-submit animate-fadeInUp" style="animation-delay: 0.85s;">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-calculator"></i> Рассчитать стоимость
+                        <span class="btn-glow"></span>
+                    </button>
+                    <p class="submit-note">
+                        <i class="fas fa-lock"></i> 
+                        Ваши данные в безопасности. Мы свяжемся с вами в течение 3-х часов.
+                    </p>
+                </div>
+            </form>
+        </div>
+    `;
+}
+    function getContactsHTML() {
+        return `
+            <h1 class="page-title animate-fadeInUp">Крекшино</h1>
+            <div class="content-card animate-fadeInUp">
+                <h2 class="card-heading"><i class="fas fa-map-marker-alt"></i> Как нас найти</h2>
+                <p class="description">
+                    К комплексу возможен подъезд со стороны Минского и Киевского шоссе. 
+                    Реконструкция Киевского шоссе позволяет добраться от МКАД до парка за 15-20 минут.
+                    Близость аэропорта "Внуково" и железной дороги.
+                </p>
+                <div class="map-wrapper">
+                    <div id="map"></div>
+                    <p class="map-note"><i class="fas fa-mouse"></i> Используйте масштаб для навигации</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+                        <h3>Адрес</h3>
+                        <p>МО, Наро-Фоминский р-н, пос. Крекшино, Логистический парк "Крекшино"</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <h3>Телефоны</h3>
+                        <p class="phone-number">+7 (495) 123-45-67</p>
+                        <p class="phone-number">+7 (800) 555-35-35</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <h3>E-mail</h3>
+                        <a href="mailto:info@tekcargo.ru" class="email-link">info@tekcargo.ru</a>
+                        <a href="mailto:sales@tekcargo.ru" class="email-link">sales@tekcargo.ru</a>
+                    </div>
+                </div>
+                <button class="btn-route" onclick="alert('Построение маршрута')"><i class="fas fa-route"></i> Проложить маршрут</button>
+            </div>
+        `;
+    }
+
+    function getAboutHTML() {
+        return `
+            <h1 class="page-title animate-fadeInUp">О компании</h1>
+            <div class="content-card animate-fadeInUp">
+                <div class="about-block">
+                    <div class="about-guarantee">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>Гарантируем соблюдение таможенного законодательства РФ с использованием AI-технологий</p>
+                    </div>
+                    <p class="about-description">Комплексный подход с использованием искусственного интеллекта позволяет разработать эффективную схему работы с учетом специфики вашего бизнеса.</p>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle"></i> Сокращение расходов на 30% за счёт автоматизации.</li>
+                        <li><i class="fas fa-check-circle"></i> Полная прозрачность всех операций в реальном времени.</li>
+                        <li><i class="fas fa-check-circle"></i> Персональный менеджер 24/7.</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+    }
+
+    function getDigestHTML() {
+        let html = '<h1 class="page-title animate-fadeInUp">Дайджест ВЭД 2026</h1><div class="digest-grid">';
+        digestNews.forEach((news, index) => {
+            html += `
+                <div class="digest-card animate-fadeInUp" data-digest-index="${index}">
+                    <div class="digest-date"><i class="far fa-calendar-alt"></i> ${news.date}</div>
+                    <h3 class="digest-title">${news.title}</h3>
+                    <button class="btn-read-digest"><i class="fas fa-book-open"></i> Читать</button>
+                </div>
+            `;
+        });
+        html += '</div>';
+        return html;
+    }
+
+    function getProjectsHTML() {
+        let html = '<h1 class="page-title animate-fadeInUp">Наши проекты</h1><div class="projects-grid">';
+        projectsData.forEach((project, index) => {
+            html += `
+                <div class="project-card animate-fadeInUp" data-project-index="${index}">
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}" loading="lazy">
+                        <span class="project-number">${project.number}</span>
+                        <div class="project-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-short">${project.shortDesc}</p>
+                        <button class="btn-read"><i class="fas fa-book-open"></i> Читать полностью</button>
+                    </div>
+                </div>
+            `;
+        });
+        html += '</div>';
+        return html;
+    }
+
+    // ===== ЗАГРУЗКА СТРАНИЦ =====
+    function loadPage(page) {
+        
+        const mainContent = document.getElementById('mainContent');
+        const heroSection = document.getElementById('heroSection');
+        const breadParent = document.getElementById('breadParent');
+        const breadCurrent = document.getElementById('breadCurrent');
+        
+        document.body.style.overflow = '';
+        
+        switch(page) {
+            case 'calculator':
+              mainContent.innerHTML = getCalculatorHTML();
+            heroSection.style.display = 'none';
+            breadcrumbsContainer.style.display = 'block';
+            breadParent.textContent = 'Услуги';
+            breadCurrent.textContent = 'Расчёт стоимости';
+            setTimeout(() => attachCalculatorEvents(), 50);
+            break;
+            case 'contacts':
+                mainContent.innerHTML = getContactsHTML();
+                heroSection.style.display = 'block';
+                breadParent.textContent = 'Контакты';
+                breadCurrent.textContent = 'Крекшино';
+                setTimeout(initMap, 100);
+                break;
+            case 'about':
+                mainContent.innerHTML = getAboutHTML();
+                heroSection.style.display = 'none';
+                breadParent.textContent = 'Компания';
+                breadCurrent.textContent = 'О компании';
+                break;
+            case 'digest':
+                mainContent.innerHTML = getDigestHTML();
+                heroSection.style.display = 'none';
+                breadParent.textContent = 'Компания';
+                breadCurrent.textContent = 'Дайджест ВЭД';
+                setTimeout(() => attachDigestEvents(), 50);
+                break;
+            case 'projects':
+                mainContent.innerHTML = getProjectsHTML();
+                heroSection.style.display = 'none';
+                breadParent.textContent = 'Компания';
+                breadCurrent.textContent = 'Наши проекты';
+                setTimeout(() => attachProjectEvents(), 50);
+                break;
+        }
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ===== ПРИВЯЗКА СОБЫТИЙ (ИСПРАВЛЕНО) =====
+    function attachProjectEvents() {
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.btn-read')) return;
+                const index = this.dataset.projectIndex;
+                if (index !== undefined) openProjectModal(parseInt(index));
+            });
+        });
+        
+        document.querySelectorAll('.btn-read').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const card = this.closest('.project-card');
+                if (card) {
+                    const index = card.dataset.projectIndex;
+                    if (index !== undefined) openProjectModal(parseInt(index));
+                }
+            });
+        });
+    }
+
+    function attachDigestEvents() {
+        document.querySelectorAll('.digest-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.btn-read-digest')) return;
+                const index = this.dataset.digestIndex;
+                if (index !== undefined) openDigestModal(parseInt(index));
+            });
+        });
+        
+        document.querySelectorAll('.btn-read-digest').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const card = this.closest('.digest-card');
+                if (card) {
+                    const index = card.dataset.digestIndex;
+                    if (index !== undefined) openDigestModal(parseInt(index));
+                }
+            });
+        });
+    }
+function attachCalculatorEvents() {
+    // Кнопки +/– для числовых полей
+    document.querySelectorAll('.number-up').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const input = this.closest('.number-input-wrapper').querySelector('input');
+            input.value = parseInt(input.value) + 1;
+        });
+    });
+    
+    document.querySelectorAll('.number-down').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const input = this.closest('.number-input-wrapper').querySelector('input');
+            const newVal = parseInt(input.value) - 1;
+            input.value = newVal >= 0 ? newVal : 0;
+        });
+    });
+    
+    // Сабмит формы
+    document.getElementById('calculatorForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Анимация успешной отправки
+        const btn = this.querySelector('.btn-submit');
+        btn.innerHTML = '<i class="fas fa-check"></i> Заявка отправлена!';
+        btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        
+        setTimeout(() => {
+            alert('✅ Спасибо! Наш специалист свяжется с вами в течение 3-х часов.');
+            btn.innerHTML = '<i class="fas fa-calculator"></i> Рассчитать стоимость';
+            btn.style.background = 'linear-gradient(135deg, var(--primary-blue), var(--primary-purple))';
+        }, 1500);
+    });
+    
+    // Анимация при фокусе на полях
+    document.querySelectorAll('.input-wrapper input, .input-wrapper textarea, .input-wrapper select').forEach(field => {
+        field.addEventListener('focus', function() {
+            this.closest('.input-wrapper').classList.add('focused');
+        });
+        field.addEventListener('blur', function() {
+            this.closest('.input-wrapper').classList.remove('focused');
+        });
+    });
+    
+    // Анимация чекбоксов
+    document.querySelectorAll('.custom-checkbox input').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            this.closest('.custom-checkbox').classList.add('checked-animation');
+            setTimeout(() => {
+                this.closest('.custom-checkbox').classList.remove('checked-animation');
+            }, 300);
+        });
+    });
+}
+    // ===== КАРТА =====
+    function initMap() {
+        if (typeof ymaps !== 'undefined' && document.getElementById('map')) {
+            ymaps.ready(function() {
+                new ymaps.Map("map", { center: [55.585, 37.112], zoom: 14, controls: ['zoomControl'] });
+            });
+        }
+    }
+
+    // ===== МОДАЛЬНЫЕ ОКНА =====
+    function openProjectModal(index) {
+        const project = projectsData[index];
+        const modal = document.getElementById('projectModal');
+        modal.querySelector('.modal-title').textContent = project.title;
+        modal.querySelector('.modal-body').innerHTML = `
+            <img src="${project.image}" alt="${project.title}" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 16px; margin-bottom: 20px;">
+            <p style="line-height: 1.8; color: var(--text-secondary);">${project.fullText}</p>
+            <button class="btn-close-modal" onclick="closeModal()"><i class="fas fa-arrow-left"></i> Назад</button>
+        `;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function openDigestModal(index) {
+        const news = digestNews[index];
+        const modal = document.getElementById('projectModal');
+        modal.querySelector('.modal-title').textContent = news.title;
+        modal.querySelector('.modal-body').innerHTML = `
+            <div class="digest-modal-date"><i class="far fa-calendar-alt"></i> ${news.date}</div>
+            ${news.fullText}
+            <button class="btn-close-modal" onclick="closeModal()"><i class="fas fa-arrow-left"></i> Назад</button>
+        `;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('projectModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // ===== ИНИЦИАЛИЗАЦИЯ =====
+    document.addEventListener('DOMContentLoaded', () => {
+        loadPage('contacts');
+        
+        document.getElementById('logoArea').addEventListener('click', () => loadPage('contacts'));
+        
+        document.querySelectorAll('[data-page]').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadPage(item.dataset.page);
+                document.querySelector('.main-nav').classList.remove('active');
+            });
+        });
+        
+        document.getElementById('breadHome').addEventListener('click', (e) => { e.preventDefault(); loadPage('contacts'); });
+        document.getElementById('breadParent').addEventListener('click', (e) => { e.preventDefault(); loadPage('contacts'); });
+        document.getElementById('mobileToggle').addEventListener('click', () => document.querySelector('.main-nav').classList.toggle('active'));
+        
+        document.querySelector('.modal-close').addEventListener('click', closeModal);
+        document.querySelector('.modal-overlay').addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+        
+        window.closeModal = closeModal;
+    });
+</script>
+
+</body>
+</html>
