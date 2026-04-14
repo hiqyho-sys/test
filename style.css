@@ -1380,3 +1380,583 @@ body {
         justify-content: center;
     }
 }
+/* ===== АНИМАЦИИ ПРИ НАВЕДЕНИИ (УВЕЛИЧЕНИЕ + СМЕНА ЦВЕТА) ===== */
+
+/* Карточки проектов */
+.project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    transform: scale(1.03) translateY(-5px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 20px 30px rgba(0, 82, 164, 0.15);
+    background: linear-gradient(135deg, #ffffff, #f8faff);
+}
+
+/* Карточки дайджеста */
+.digest-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.digest-card:hover {
+    transform: scale(1.03) translateY(-5px);
+    border-color: var(--accent-red);
+    box-shadow: 0 20px 30px rgba(227, 24, 55, 0.1);
+    background: linear-gradient(135deg, #ffffff, #fff5f5);
+}
+
+.digest-card:hover .digest-date {
+    color: var(--primary-blue);
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+.digest-card:hover .digest-title {
+    color: var(--primary-dark);
+}
+
+/* Кнопки в карточках */
+.btn-read,
+.btn-read-digest {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-read:hover,
+.btn-read-digest:hover {
+    transform: scale(1.05);
+    letter-spacing: 0.3px;
+}
+
+/* Карточка контента (контакты, о компании) */
+.content-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-card:hover {
+    transform: scale(1.01) translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 82, 164, 0.1);
+    border-color: var(--primary-blue);
+}
+
+/* Контактные иконки */
+.contact-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-item:hover {
+    transform: scale(1.05) translateY(-3px);
+}
+
+.contact-item:hover .contact-icon {
+    background: var(--accent-red);
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: 0 10px 20px rgba(227, 24, 55, 0.2);
+}
+
+.contact-item:hover .phone-number {
+    color: var(--accent-red);
+    transform: scale(1.02);
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+/* Пункты списка "О компании" */
+.about-list li {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.about-list li:hover {
+    transform: scale(1.02) translateX(8px);
+    background: linear-gradient(90deg, rgba(0, 82, 164, 0.05), transparent);
+    color: var(--primary-blue);
+}
+
+.about-list li:hover i {
+    color: var(--accent-red);
+    transform: scale(1.2) rotate(5deg);
+    transition: all 0.2s ease;
+}
+
+/* Блок гарантии */
+.about-guarantee {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-guarantee:hover {
+    transform: scale(1.02) translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 82, 164, 0.1);
+    border-left-width: 8px;
+}
+
+/* Кнопки в форме */
+.btn-route,
+.btn-primary,
+.btn-secondary,
+.btn-submit {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-route:hover,
+.btn-primary:hover,
+.btn-submit:hover {
+    transform: scale(1.05) translateY(-3px);
+    letter-spacing: 0.5px;
+}
+
+.btn-secondary:hover {
+    transform: scale(1.05) translateY(-3px);
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Логотип */
+.logo-area {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-area:hover {
+    transform: scale(1.05);
+}
+
+.logo-area:hover .logo-icon {
+    background: var(--accent-red);
+    transform: rotate(5deg);
+}
+
+.logo-area:hover .logo-main {
+    color: var(--accent-red);
+}
+
+/* Пункты меню */
+.nav-link {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+    transform: scale(1.05) translateY(-2px);
+    color: var(--primary-blue);
+    background: rgba(0, 82, 164, 0.03);
+}
+
+/* Выпадающее меню */
+.dropdown-menu a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-menu a:hover {
+    transform: scale(1.02) translateX(5px);
+}
+
+/* Кнопка заявки в шапке */
+.btn-request {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-request:hover {
+    transform: scale(1.08) translateY(-2px);
+    background: var(--primary-dark);
+    box-shadow: 0 10px 20px rgba(0, 82, 164, 0.2);
+}
+
+/* Плавающая карточка в герое */
+.floating-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-card:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 30px 40px rgba(0, 82, 164, 0.15);
+    border-color: var(--primary-blue);
+}
+
+.floating-card:hover i {
+    color: var(--accent-red);
+    transform: scale(1.2) rotate(10deg);
+    transition: all 0.3s ease;
+}
+
+/* Статистика в герое */
+.stat-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.stat-item:hover {
+    transform: scale(1.1) translateY(-3px);
+    background: rgba(0, 82, 164, 0.03);
+}
+
+.stat-item:hover .stat-number {
+    color: var(--accent-red);
+    transform: scale(1.1);
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+/* Ссылки в подвале */
+.footer-links a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    transform: scale(1.1) translateY(-2px);
+    color: white;
+}
+
+/* Кнопка закрытия модального окна */
+.modal-close {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close:hover {
+    transform: scale(1.15) rotate(90deg);
+    background: var(--accent-red);
+    color: white;
+}
+
+/* Поля ввода в калькуляторе */
+.input-wrapper {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-wrapper:hover {
+    transform: scale(1.01);
+    border-color: var(--primary-blue);
+}
+
+/* Чекбоксы */
+.custom-checkbox {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-checkbox:hover {
+    transform: scale(1.05) translateX(3px);
+}
+
+.custom-checkbox:hover .checkbox-label {
+    color: var(--primary-blue);
+}
+
+/* Хлебные крошки */
+.breadcrumbs a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.breadcrumbs a:hover {
+    transform: scale(1.1);
+    color: var(--accent-red);
+}
+
+/* Заголовки секций */
+.section-title {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-title:hover {
+    transform: scale(1.02) translateX(5px);
+}
+
+.section-title:hover i {
+    color: var(--accent-red);
+    transform: scale(1.2) rotate(5deg);
+    transition: all 0.2s ease;
+}
+
+/* Кнопки +/– в калькуляторе */
+.number-controls button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.number-controls button:hover {
+    transform: scale(1.15);
+}
+
+/* Область загрузки файлов */
+.file-upload-wrapper {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.file-upload-wrapper:hover {
+    transform: scale(1.01);
+    border-color: var(--primary-blue);
+    background: linear-gradient(135deg, #f8faff, #ffffff);
+}
+
+.file-upload-wrapper:hover i {
+    color: var(--accent-red);
+    transform: scale(1.1) translateY(-5px);
+    transition: all 0.3s ease;
+}
+/* ===== СТРАНИЦА ЦЕН ===== */
+.prices-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray-700);
+    margin-bottom: 0;
+}
+
+.prices-section {
+    margin-bottom: 32px;
+}
+
+.prices-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+.prices-section-title i {
+    color: var(--accent-red);
+    font-size: 22px;
+}
+
+.prices-table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    margin-bottom: 20px;
+}
+
+.prices-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 800px;
+}
+
+.prices-table th {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+    color: white;
+    font-weight: 600;
+    padding: 14px 16px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.prices-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--gray-200);
+    color: var(--gray-700);
+    vertical-align: top;
+}
+
+.prices-table tr:last-child td {
+    border-bottom: none;
+}
+
+.prices-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.prices-table tbody tr:hover {
+    background: var(--gray-50);
+    transform: scale(1.002);
+}
+
+.prices-table td:first-child {
+    font-weight: 600;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.prices-table td:last-child {
+    font-weight: 600;
+    color: var(--accent-red);
+    white-space: nowrap;
+}
+
+.prices-table-compact td {
+    padding: 10px 12px;
+    font-size: 13px;
+}
+
+.prices-note {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.prices-notes-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+}
+
+.prices-notes-list {
+    padding-left: 20px;
+    color: var(--gray-600);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.prices-notes-list li {
+    margin-bottom: 6px;
+}
+
+/* Адаптив для таблиц */
+@media (max-width: 768px) {
+    .prices-table {
+        font-size: 13px;
+    }
+    
+    .prices-table th,
+    .prices-table td {
+        padding: 10px 12px;
+    }
+    
+    .prices-section-title {
+        font-size: 18px;
+    }
+}
+
+/* ===== АНИМАЦИИ ДЛЯ КАРТОЧЕК ПРОЕКТОВ ===== */
+.project-card {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 40px rgba(0, 82, 164, 0.15);
+    border-color: var(--primary-blue);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-number {
+    background: var(--primary-blue);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-title {
+    color: var(--primary-blue);
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    background: linear-gradient(135deg, rgba(0, 82, 164, 0.85), rgba(227, 24, 55, 0.85));
+    transition: all 0.4s ease;
+}
+
+.project-card:hover .btn-read {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+    transform: scale(1.02);
+    letter-spacing: 0.3px;
+    box-shadow: 0 5px 15px rgba(0, 82, 164, 0.2);
+}
+
+/* ===== АНИМАЦИИ ДЛЯ КАРТОЧЕК ДАЙДЖЕСТА ===== */
+.digest-card {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.digest-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 40px rgba(227, 24, 55, 0.12);
+    border-color: var(--accent-red);
+    background: linear-gradient(135deg, #ffffff, #fff8f8);
+}
+
+.digest-card:hover .digest-date {
+    color: var(--accent-red);
+    transform: translateX(5px);
+    transition: all 0.3s ease;
+}
+
+.digest-card:hover .digest-date i {
+    transform: rotate(10deg) scale(1.1);
+    transition: all 0.3s ease;
+    color: var(--accent-red);
+}
+
+.digest-card:hover .digest-title {
+    color: var(--primary-dark);
+    transform: translateX(3px);
+    transition: all 0.3s ease;
+}
+
+.digest-card:hover .btn-read-digest {
+    background: var(--accent-red);
+    color: white;
+    border-color: var(--accent-red);
+    transform: scale(1.02);
+    letter-spacing: 0.3px;
+    box-shadow: 0 5px 15px rgba(227, 24, 55, 0.2);
+}
+
+/* Анимация иконки в кнопке при наведении на карточку */
+.project-card:hover .btn-read i,
+.digest-card:hover .btn-read-digest i {
+    transform: translateX(3px);
+    transition: transform 0.3s ease;
+}
+
+/* Плавное появление при загрузке */
+.project-card,
+.digest-card {
+    animation: cardAppear 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Задержки для последовательного появления */
+.project-card:nth-child(1) { animation-delay: 0.05s; }
+.project-card:nth-child(2) { animation-delay: 0.1s; }
+.project-card:nth-child(3) { animation-delay: 0.15s; }
+.project-card:nth-child(4) { animation-delay: 0.2s; }
+.project-card:nth-child(5) { animation-delay: 0.25s; }
+.project-card:nth-child(6) { animation-delay: 0.3s; }
+.project-card:nth-child(7) { animation-delay: 0.35s; }
+.project-card:nth-child(8) { animation-delay: 0.4s; }
+.project-card:nth-child(9) { animation-delay: 0.45s; }
+
+.digest-card:nth-child(1) { animation-delay: 0.05s; }
+.digest-card:nth-child(2) { animation-delay: 0.1s; }
+.digest-card:nth-child(3) { animation-delay: 0.15s; }
+.digest-card:nth-child(4) { animation-delay: 0.2s; }
+.digest-card:nth-child(5) { animation-delay: 0.25s; }
+.digest-card:nth-child(6) { animation-delay: 0.3s; }
+.digest-card:nth-child(7) { animation-delay: 0.35s; }
+.digest-card:nth-child(8) { animation-delay: 0.4s; }
+.digest-card:nth-child(9) { animation-delay: 0.45s; }
+
+/* Эффект при клике */
+.project-card:active,
+.digest-card:active {
+    transform: translateY(-5px) scale(0.99);
+    transition: all 0.1s ease;
+}
