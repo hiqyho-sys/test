@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    
-   <div class="ticker" id="currencyTicker">
-    <span class="ticker-item">💰 USD 92.45 ₽</span>
-    <span class="ticker-item">💶 EUR 100.31 ₽</span>
-    <span class="ticker-item">🇨🇳 CNY 12.67 ₽</span>
-    <span class="ticker-item">📞 +7 (800) 555-35-35</span>
+    <div class="ticker-wrapper">
+    <div class="ticker" id="currencyTicker">
+        <span class="ticker-item">💰 Загрузка курсов...</span>
+    </div>
 </div>
 
     <meta charset="UTF-8">
@@ -209,9 +207,12 @@
                 <span class="ticker-item"><i class="fas fa-truck"></i> Доставка из Китая</span>
                 <span class="ticker-item"><i class="fas fa-shield-alt"></i> Страхование</span>
             `;
+            ticker.innerHTML = content;
+            ticker.classList.add('loaded'); // ← ВОТ ЗДЕСЬ ДОБАВИЛ
         } catch (error) {
             console.error('Ошибка курсов:', error);
             ticker.innerHTML = '<span class="ticker-item">💰 USD 92.45 ₽</span><span class="ticker-item">💶 EUR 100.31 ₽</span><span class="ticker-item">🇨🇳 CNY 12.67 ₽</span><span class="ticker-item">📞 Звоните: +7 (800) 555-35-35</span>'.repeat(3);
+             ticker.classList.add('loaded');
         }
     }
 
@@ -1420,7 +1421,7 @@ case 'prices':
     <span class="online-dot"></span>
     <span class="online-text"><span id="onlineCount">3</span> человека рассчитывают доставку</span>
 </div>
-    
- </script>
+
+    </script>
 </body>
 </html>

@@ -2649,3 +2649,12 @@ body {
     background: var(--primary-blue);
     color: white;
 }
+
+.ticker {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ticker.loaded {
+    opacity: 1;
+}
