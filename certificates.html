@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свидетельства | ТЭК Карго Транс</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === БАЗОВЫЕ ПЕРЕМЕННЫЕ (как на основном сайте) === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0052a4;
+            --primary-dark: #003366;
+            --primary-light: #3b82f6;
+            --accent-red: #e31837;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-700: #334155;
+            --gray-900: #0f172a;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--text-primary);
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        /* === ШАПКА === */
+        .header {
+            background: var(--primary-blue);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            border-bottom: 3px solid var(--primary-light);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 22px;
+        }
+
+        .logo-main {
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo-sub {
+            color: rgba(255,255,255,0.7);
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            padding: 24px 14px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .btn-request {
+            background: var(--accent-red);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* === ОСНОВНОЙ КОНТЕНТ === */
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin: 30px 0 20px;
+        }
+
+        .certificates-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex: 1;
+        }
+
+        .certificate-card {
+            background: var(--white);
+            border-radius: 20px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px); /* Вся доступная высота минус шапка/отступы */
+            min-height: 600px;
+        }
+
+        .certificate-header {
+            padding: 20px 24px 12px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .certificate-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .certificate-number {
+            font-size: 15px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .certificate-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .pdf-viewer {
+            flex: 1;
+            background: var(--gray-100);
+            padding: 16px;
+            display: flex;
+        }
+
+        .pdf-viewer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            background: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .certificate-footer-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 32px;
+            padding: 16px 24px;
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+            font-size: 14px;
+        }
+
+        .meta-item {
+            color: var(--text-secondary);
+        }
+
+        .meta-item strong {
+            color: var(--gray-900);
+            margin-right: 6px;
+        }
+
+        /* === ПОДВАЛ === */
+        .footer {
+            background: var(--primary-blue);
+            padding: 24px 0;
+            margin-top: auto;
+            border-top: 4px solid var(--primary-light);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 24px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Адаптив */
+        @media (max-width: 700px) {
+            .certificate-card {
+                height: auto;
+                min-height: 500px;
+            }
+            .pdf-viewer {
+                min-height: 400px;
+            }
+            .certificate-footer-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo-area" onclick="window.location.href='index.html'">
+            <div class="logo-icon"><i class="fas fa-truck"></i></div>
+            <div class="logo-text">
+                <div class="logo-main">ТЭК Карго Транс</div>
+                <div class="logo-sub">Таможня будущего • с 1999</div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 8px;">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="index.html#contacts" class="nav-link">Контакты</a>
+        </div>
+        <a href="#" class="btn-request"><i class="fas fa-pen"></i> Заполнить заявку</a>
+    </div>
+</header>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<main class="container">
+    <h1 class="page-title">Свидетельства и сертификаты</h1>
+
+    <div class="certificates-grid">
+        <!-- Свидетельство СВХ -->
+        <div class="certificate-card">
+            <div class="certificate-header">
+                <h2>Свидетельство СВХ</h2>
+                <div class="certificate-number">СВИДЕТЕЛЬСТВО № 10009/061210/10011/12</div>
+                <div class="certificate-subtitle">о включении в реестр владельцев складов временного хранения</div>
+            </div>
+            <div class="pdf-viewer">
+                <iframe src="documents/svid_svkh_11_12.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+            </div>
+            <div class="certificate-footer-meta">
+                <div class="meta-item"><strong>Выдано:</strong> Центральная акцизная таможня</div>
+                <div class="meta-item"><strong>Владелец:</strong> ООО «ТЭК Карго Транс»</div>
+                <div class="meta-item"><strong>ИНН:</strong> 5032149588</div>
+                <div class="meta-item"><strong>Тип склада:</strong> открытый</div>
+                <div class="meta-item"><strong>Объём:</strong> 2 573,24 м³</div>
+                <div class="meta-item"><strong>Площадь:</strong> 5 499,7 м²</div>
+                <div class="meta-item"><strong>Начальник:</strong> Байков А.А.</div>
+                <div class="meta-item"><strong>Дата:</strong> 10.09.2025</div>
+            </div>
+        </div>
+
+        <!-- Свидетельство Таможенного склада -->
+        <div class="certificate-card">
+            <div class="certificate-header">
+                <h2>Свидетельство Таможенного склада</h2>
+                <div class="certificate-number">СВИДЕТЕЛЬСТВО № 10132/031/Й</div>
+                <div class="certificate-subtitle">о включении в реестр владельцев таможенных складов</div>
+            </div>
+            <div class="pdf-viewer">
+                <iframe src="documents/sv_vo_ts_31J.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+            </div>
+            <div class="certificate-footer-meta">
+                <div class="meta-item"><strong>Выдано:</strong> Московская таможня</div>
+                <div class="meta-item"><strong>Владелец:</strong> ООО «ТЭК Карго Транс»</div>
+                <div class="meta-item"><strong>ИНН:</strong> 5032149588</div>
+                <div class="meta-item"><strong>Тип:</strong> открытый</div>
+                <div class="meta-item"><strong>Объём:</strong> 8 161,91 м³</div>
+                <div class="meta-item"><strong>Адрес:</strong> Москва, п. Марушкинское, д. Крёкшино</div>
+                <div class="meta-item"><strong>Начальник:</strong> В.А. Зябко</div>
+                <div class="meta-item"><strong>Дата:</strong> 29.07.2025</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- ПОДВАЛ -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <div>© 2009–2026 ТЭК Карго Транс. Таможенное оформление реального времени.</div>
+        <div class="footer-links">
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Карта сайта</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -44,6 +44,7 @@
                     <a href="#" class="nav-link">Компания <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown-menu">
                         <a href="#" class="dropdown-item" data-page="about">О компании</a>
+                        <a href="#" class="dropdown-item" data-page="certificates">Свидетельства</a>
                         <a href="#" class="dropdown-item" data-page="digest">Дайджест ВЭД</a>
                         <a href="#" class="dropdown-item" data-page="projects">Наши проекты</a>
                     </div>
@@ -169,6 +170,31 @@
 </div>
 
 <script>
+
+function openPDFModal(title, pdfUrl) {
+    const modal = document.getElementById('projectModal');
+    modal.querySelector('.modal-title').textContent = title;
+    modal.querySelector('.modal-body').innerHTML = `
+        <div class="pdf-viewer">
+            <iframe src="${pdfUrl}" width="100%" height="600px" style="border: none; border-radius: 12px;"></iframe>
+            <div class="pdf-controls">
+                <a href="${pdfUrl}" download class="btn-download-pdf">
+                    <i class="fas fa-download"></i> Скачать PDF
+                </a>
+                <a href="${pdfUrl}" target="_blank" class="btn-open-pdf">
+                    <i class="fas fa-external-link-alt"></i> Открыть в новой вкладке
+                </a>
+            </div>
+            <button class="btn-close-modal" onclick="closeModal()">
+                <i class="fas fa-arrow-left"></i> Назад
+            </button>
+        </div>
+    `;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+
 
     // ===== 1. КУРСЫ ВАЛЮТ (ПРОСТОЙ И РАБОЧИЙ) =====
     async function loadCurrencyRates() {
@@ -1109,6 +1135,127 @@ function getOutsourcingHTML() {
     `;
 }
 
+function getCertificatesHTML() {
+    return `
+        <h1 class="page-title animate-fadeInUp">Свидетельства и сертификаты</h1>
+        
+        <div class="certificates-container animate-fadeInUp" style="animation-delay: 0.1s;">
+            <!-- Свидетельство СВХ -->
+            <div class="certificate-full-card">
+                <div class="certificate-header">
+                    <h2>Свидетельство СВХ</h2>
+                    <p class="certificate-number">СВИДЕТЕЛЬСТВО № 10009/061210/10011/12</p>
+                    <p class="certificate-subtitle">о включении в реестр владельцев складов временного хранения</p>
+                </div>
+                
+                <div class="certificate-content-wrapper">
+                    <div class="certificate-pdf-viewer">
+                        <iframe src="documents/svid_svkh_11_12.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                                width="100%" height="100%" 
+                                style="border: none; border-radius: 12px; background: #fff; box-shadow: var(--shadow-md);">
+                        </iframe>
+                    </div>
+                    
+                    <div class="certificate-meta">
+                        <div class="meta-item"><strong>Выдано:</strong> Центральная акцизная таможня</div>
+                        <div class="meta-item"><strong>Владелец:</strong> ООО «ТЭК Карго Транс»</div>
+                        <div class="meta-item"><strong>ИНН:</strong> 5032149588</div>
+                        <div class="meta-item"><strong>Тип склада:</strong> открытый</div>
+                        <div class="meta-item"><strong>Полезный объем:</strong> 2 573,24 куб.м</div>
+                        <div class="meta-item"><strong>Полезная площадь:</strong> 5 499,7 кв.м</div>
+                        <div class="meta-item"><strong>Начальник таможни:</strong> Байков А.А.</div>
+                        <div class="meta-item"><strong>Дата выдачи:</strong> 10 сентября 2025 г.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Свидетельство Таможенного склада -->
+            <div class="certificate-full-card">
+                <div class="certificate-header">
+                    <h2>Свидетельство Таможенного склада</h2>
+                    <p class="certificate-number">СВИДЕТЕЛЬСТВО № 10132/031/Й</p>
+                    <p class="certificate-subtitle">о включении в реестр владельцев таможенных складов</p>
+                </div>
+                
+                <div class="certificate-content-wrapper">
+                    <div class="certificate-pdf-viewer">
+                        <iframe src="documents/sv_vo_ts_31J.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                                width="100%" height="100%" 
+                                style="border: none; border-radius: 12px; background: #fff; box-shadow: var(--shadow-md);">
+                        </iframe>
+                    </div>
+                    
+                    <div class="certificate-meta">
+                        <div class="meta-item"><strong>Выдано:</strong> Московская таможня</div>
+                        <div class="meta-item"><strong>Владелец:</strong> ООО «Таможенно-эксплуатационный комплекс Карго Транс»</div>
+                        <div class="meta-item"><strong>ИНН:</strong> 5032149588</div>
+                        <div class="meta-item"><strong>Тип склада:</strong> открытый</div>
+                        <div class="meta-item"><strong>Полезный объем:</strong> 8 161,91 куб.м</div>
+                        <div class="meta-item"><strong>Адрес:</strong> 108810, Москва, поселение Марушкинское, д. Крёкшино, Терминальный пр-д, д. 3, стр. 4</div>
+                        <div class="meta-item"><strong>И.о. начальника таможни:</strong> В.А. Зябко</div>
+                        <div class="meta-item"><strong>Дата выдачи:</strong> 29 июля 2025 г.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="certificates-footer animate-fadeInUp" style="animation-delay: 0.2s;">
+            <h3><i class="fas fa-question-circle"></i> Ответим на все ваши вопросы</h3>
+            <div class="certificates-buttons">
+                <a href="#" class="btn-simple" data-page="calculator">
+                    <i class="fas fa-file-alt"></i> Простая форма
+                </a>
+                <a href="#" class="btn-extended" data-page="calculator">
+                    <i class="fas fa-file-signature"></i> Расширенная форма
+                </a>
+            </div>
+        </div>
+    `;
+}
+
+// Данные сертификатов для модального окна
+const certificatesData = [
+    {
+        title: 'Свидетельство СМА',
+        image: 'https://placehold.co/800x1100/0052a4/white?text=Свидетельство+СМА',
+        description: 'Свидетельство о включении в Реестр таможенных представителей. Выдано Федеральной таможенной службой Российской Федерации.'
+    },
+    {
+        title: 'Свидетельство СГМ',
+        image: 'https://placehold.co/800x1100/003366/white?text=Свидетельство+СГМ',
+        description: 'Свидетельство о включении в Реестр владельцев складов временного хранения. Подтверждает право осуществлять деятельность в качестве владельца СВХ.'
+    },
+    {
+        title: 'Сертификат ISO 9001',
+        image: 'https://placehold.co/800x1100/3b82f6/white?text=Сертификат+ISO+9001',
+        description: 'Сертификат соответствия системы менеджмента качества требованиям международного стандарта ISO 9001:2015.'
+    },
+    {
+        title: 'Лицензия ФСБ',
+        image: 'https://placehold.co/800x1100/06b6d4/white?text=Лицензия+ФСБ',
+        description: 'Лицензия на осуществление деятельности с использованием сведений, составляющих государственную тайну.'
+    }
+];
+
+function openCertificateModal(index) {
+    const cert = certificatesData[index];
+    if (!cert) return;
+    
+    const modal = document.getElementById('projectModal');
+    modal.querySelector('.modal-title').textContent = cert.title;
+    modal.querySelector('.modal-body').innerHTML = `
+        <div style="text-align: center;">
+            <img src="${cert.image}" alt="${cert.title}" style="max-width: 100%; max-height: 70vh; border-radius: 12px; box-shadow: var(--shadow-lg);">
+            <p style="margin-top: 20px; color: var(--text-secondary);">${cert.description}</p>
+            <button class="btn-close-modal" onclick="closeModal()" style="margin-top: 20px;">
+                <i class="fas fa-arrow-left"></i> Назад
+            </button>
+        </div>
+    `;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
     function getContactsHTML() {
         return `
             <h1 class="page-title animate-fadeInUp">Крекшино</h1>
@@ -1216,6 +1363,14 @@ function getOutsourcingHTML() {
         document.body.style.overflow = '';
         
         switch(page) {
+
+            case 'certificates':
+    mainContent.innerHTML = getCertificatesHTML();
+    if (heroSection) heroSection.style.display = 'none';
+    if (breadcrumbsContainer) breadcrumbsContainer.style.display = 'block';
+    breadParent.textContent = 'Компания';
+    breadCurrent.textContent = 'Свидетельства';
+    break;
 
 case 'outsourcing':
     mainContent.innerHTML = getOutsourcingHTML();
@@ -1414,6 +1569,75 @@ case 'prices':
         
         window.closeModal = closeModal;
     });
+    // ===== ПАДАЮЩИЕ ЧАСТИЦЫ (ДОЖДЬ) =====
+function initRainParticles() {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'particlesCanvas';
+    document.body.appendChild(canvas);
+    
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+    
+    function createParticles() {
+        const count = 40;
+        particles = [];
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                len: Math.random() * 40 + 20,
+                speed: Math.random() * 3 + 2,
+                opacity: Math.random() * 0.15 + 0.05
+            });
+        }
+    }
+    
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.strokeStyle = `rgba(0, 82, 164, 0.15)`;
+        ctx.lineWidth = 1;
+        
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x - 10, p.y + p.len);
+            ctx.strokeStyle = `rgba(0, 82, 164, ${p.opacity})`;
+            ctx.stroke();
+            
+            p.y += p.speed;
+            
+            if (p.y > height) {
+                p.y = -p.len;
+                p.x = Math.random() * width;
+            }
+        });
+        
+        requestAnimationFrame(draw);
+    }
+    
+    resize();
+    createParticles();
+    draw();
+    
+    window.addEventListener('resize', () => {
+        resize();
+        createParticles();
+    });
+}
+
+// Вызови в DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    initRainParticles();
+    // ... остальные вызовы ...
+});
 </script>
 
 <!-- ПЛАШКА СЕЙЧАС ОНЛАЙН -->

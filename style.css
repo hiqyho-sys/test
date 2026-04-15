@@ -6,30 +6,72 @@
 }
 
 :root {
-    --primary-blue: #0052a4;
-    --primary-dark: #003366;
+    --bg-dark: #ffffff;                /* было #0a0a0f → белый */
+    --bg-secondary: #f8fafc;           /* было #12121a → светло-серый */
+    --bg-card: rgba(255, 255, 255, 0.9); /* было rgba(20,20,30,0.8) → белый полупрозрачный */
+    --primary-blue: #0052a4;           /* тёмно-синий (лого) */
+    --primary-cyan: #06b6d4;           /* бирюзовый */
+    --primary-purple: #3b82f6;         /* голубой вместо фиолетового */
+    --primary-pink: #ec4899;
     --accent-red: #e31837;
-    --accent-light: #f5f7fa;
+    --accent-orange: #f97316;
+    --accent-green: #10b981;
+    --text-primary: #1e293b;           /* тёмно-серый вместо белого */
+    --text-secondary: #475569;         /* серый */
+    --text-muted: #64748b;             /* светло-серый */
+    --border-light: rgba(0, 0, 0, 0.06); /* тёмная рамка */
+    --border-medium: rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glow-blue: 0 0 20px rgba(0, 82, 164, 0.15);
+    --glow-purple: 0 0 20px rgba(59, 130, 246, 0.15);
+    --glow-cyan: 0 0 20px rgba(6, 182, 212, 0.15);
+    --glow-red: 0 0 20px rgba(227, 24, 55, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        --primary-light: #3b82f6;
     --white: #ffffff;
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-500: #6b7280;
-    --gray-700: #374151;
-    --gray-900: #111827;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
-    --transition: all 0.2s ease;
 }
 
 body {
     font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--white);
-    color: var(--gray-900);
-    line-height: 1.5;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 82, 164, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.02) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: -1;
+}
 .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -62,13 +104,15 @@ body {
 
 /* ===== ШАПКА (минимализм) ===== */
 .header {
-    background: var(--white);
+    background: var(--primary-blue);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     padding: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: var(--shadow-sm);
-    border-bottom: 1px solid var(--gray-200);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid var(--primary-light);
 }
 
 .header-inner {
@@ -103,19 +147,16 @@ body {
 }
 
 .logo-main {
-    color: var(--primary-blue);
-    font-size: 20px;
+    color: var(--white);
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: -0.3px;
     line-height: 1.2;
 }
-
 .logo-sub {
-    color: var(--gray-500);
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 400;
 }
 
 /* Навигация */
@@ -130,7 +171,7 @@ body {
 }
 
 .nav-link {
-    color: var(--gray-700);
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     padding: 26px 14px;
     display: flex;
@@ -143,8 +184,9 @@ body {
 }
 
 .nav-link:hover {
-    color: var(--primary-blue);
-    border-bottom-color: var(--primary-blue);
+    color: var(--white) !important;
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom-color: var(--white);
 }
 
 .nav-link i {
@@ -191,8 +233,8 @@ body {
 }
 
 .dropdown-menu a:hover {
-    background: var(--gray-50);
-    color: var(--primary-blue);
+    background: var(--primary-blue);
+    color: var(--white) !important;
 }
 
 .dropdown-menu-wide {
@@ -216,8 +258,10 @@ body {
 }
 
 .btn-request:hover {
-    background: #c41230;
-    transform: translateY(-1px);
+    background: var(--white);
+    color: var(--primary-blue) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
 
 .mobile-toggle {
@@ -752,9 +796,24 @@ body {
 
 /* ===== ПОДВАЛ ===== */
 .footer {
-    background: var(--gray-900);
-    padding: 28px 0;
-    margin-top: 40px;
+    background: var(--primary-blue);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 32px 0;
+    margin-top: 60px;
+    border-top: 4px solid var(--primary-light);
+}
+
+.footer-copyright {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-links a:hover {
+    color: var(--white);
 }
 
 .footer-inner {
@@ -1553,13 +1612,27 @@ body {
 
 /* Кнопка заявки в шапке */
 .btn-request {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--accent-red);
+    color: var(--white) !important;
+    padding: 10px 20px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(227, 24, 55, 0.3);
+    border: none;
 }
 
 .btn-request:hover {
-    transform: scale(1.08) translateY(-2px);
-    background: var(--primary-dark);
-    box-shadow: 0 10px 20px rgba(0, 82, 164, 0.2);
+    background: #c41230;
+    color: var(--white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(227, 24, 55, 0.4);
 }
 
 /* Плавающая карточка в герое */
@@ -2657,4 +2730,310 @@ body {
 
 .ticker.loaded {
     opacity: 1;
+}
+
+/* ===== СТРАНИЦА СВИДЕТЕЛЬСТВ ===== */
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.certificate-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.certificate-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-blue);
+}
+
+.certificate-image {
+    width: 100%;
+    aspect-ratio: 4 / 5.6;
+    overflow: hidden;
+    background: var(--gray-100);
+}
+
+.certificate-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.certificate-card:hover .certificate-image img {
+    transform: scale(1.05);
+}
+
+.certificate-content {
+    padding: 20px;
+}
+
+.certificate-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+}
+
+.certificate-content p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.btn-view-cert {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-blue);
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-view-cert:hover {
+    color: var(--primary-dark);
+    gap: 12px;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+    .certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== СТРАНИЦА СВИДЕТЕЛЬСТВ (PDF ВО ВСЮ ШИРИНУ) ===== */
+.certificates-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.certificate-full-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.certificate-header {
+    margin-bottom: 20px;
+    text-align: left;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 16px;
+}
+
+.certificate-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 6px;
+}
+
+.certificate-number {
+    font-size: 16px;
+    color: var(--primary-blue);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.certificate-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Обёртка для PDF + мета-информация */
+.certificate-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* PDF Viewer */
+.certificate-pdf-viewer {
+    background: var(--gray-100);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    min-height: 600px;
+    height: 70vh;
+    max-height: 800px;
+}
+
+.certificate-pdf-viewer iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+}
+
+/* Мета-информация справа */
+.certificate-meta {
+    background: var(--gray-50);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.meta-item {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.meta-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.meta-item strong {
+    display: block;
+    color: var(--gray-900);
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* Подвал */
+.certificates-footer {
+    text-align: center;
+    padding: 36px;
+    background: linear-gradient(135deg, var(--gray-50), var(--white));
+    border-radius: 20px;
+    border: 1px solid var(--gray-200);
+}
+
+.certificates-footer h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 24px;
+}
+
+.certificates-footer h3 i {
+    color: var(--primary-blue);
+    margin-right: 10px;
+}
+
+.certificates-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-simple,
+.btn-extended {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.btn-simple {
+    background: var(--white);
+    color: var(--primary-blue);
+    border: 1px solid var(--gray-300);
+}
+
+.btn-simple:hover {
+    background: var(--gray-50);
+    border-color: var(--primary-blue);
+}
+
+.btn-extended {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+.btn-extended:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .certificate-content-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .certificate-pdf-viewer {
+        height: 500px;
+        min-height: 400px;
+    }
+    
+    .certificate-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .meta-item {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .certificate-full-card {
+        padding: 16px;
+    }
+    
+    .certificate-header h2 {
+        font-size: 20px;
+    }
+    
+    .certificate-meta {
+        grid-template-columns: 1fr;
+    }
+    
+    .certificate-pdf-viewer {
+        height: 400px;
+        min-height: 350px;
+    }
+    
+    .certificates-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-simple,
+    .btn-extended {
+        justify-content: center;
+    }
 }
