@@ -1960,3 +1960,635 @@ body {
     transform: translateY(-5px) scale(0.99);
     transition: all 0.1s ease;
 }
+/* Бегущая строка */
+.ticker-wrapper {
+    background: linear-gradient(90deg, #0f1a2e, #1a2f4f);
+    padding: 8px 0;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: tickerScroll 40s linear infinite;
+    color: #a1a1aa;
+    font-size: 14px;
+}
+
+.ticker:hover {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 40px;
+}
+
+@keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Счётчик */
+.counter-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.counter-number {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+.counter-label {
+    font-size: 14px;
+    color: #a1a1aa;
+}
+
+/* Плашка онлайн */
+.online-badge {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(20, 20, 30, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 12px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 999;
+}
+
+.online-dot {
+    width: 12px;
+    height: 12px;
+    background: #10b981;
+    border-radius: 50%;
+    position: relative;
+}
+
+.online-dot::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.3);
+    animation: onlinePing 1.5s infinite;
+}
+
+@keyframes onlinePing {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ===== ПЛАВАЮЩИЕ ЧАСТИЦЫ ===== */
+#particlesCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ===== ПУЛЬСИРУЮЩИЙ ЛОГОТИП ===== */
+.logo-icon {
+    animation: logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 82, 164, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 20px 5px rgba(0, 82, 164, 0.3);
+        transform: scale(1.03);
+    }
+}
+
+/* ===== ПЛАШКА ОНЛАЙН (НОВЫЙ ДИЗАЙН) ===== */
+.online-badge {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, #1a2f4f, #0f1a2e);
+    backdrop-filter: blur(12px);
+    padding: 14px 22px;
+    border-radius: 50px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(59, 130, 246, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 999;
+    animation: badgeSlideIn 0.5s ease-out;
+}
+
+.online-badge:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
+}
+
+@keyframes badgeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.online-dot {
+    width: 14px;
+    height: 14px;
+    background: #10b981;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 15px #10b981;
+}
+
+.online-dot::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.4);
+    animation: onlinePing 1.8s ease-in-out infinite;
+}
+
+@keyframes onlinePing {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+.online-text {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+#onlineCount {
+    font-weight: 800;
+    font-size: 18px;
+    color: #10b981;
+    margin-right: 2px;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+/* ===== АНИМАЦИЯ ЗАГРУЗКИ СТРАНИЦ ===== */
+#mainContent {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-transition {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.page-transition-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== ПАРАЛЛАКС ДЛЯ ГЕРОЯ ===== */
+.hero {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* ===== СЧЁТЧИК ДЕКЛАРАЦИЙ ===== */
+.counter-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+}
+
+.counter-item {
+    text-align: center;
+}
+
+.counter-number {
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+.counter-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+/* Плавные переходы для контента */
+#mainContent {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Счётчик деклараций */
+.counter-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.counter-item {
+    text-align: left;
+}
+
+.counter-number {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.counter-label {
+    font-size: 14px;
+    color: #a1a1aa;
+    margin-top: 4px;
+}
+/* ===== СЕТКА ТЕРМИНОВ ===== */
+.terms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.term-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.term-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(0, 82, 164, 0.12);
+    border-color: var(--primary-blue);
+}
+
+.term-number {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    opacity: 0.15;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    line-height: 1;
+}
+
+.term-card:hover .term-number {
+    opacity: 0.25;
+    transition: opacity 0.3s ease;
+}
+
+.term-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+}
+
+.term-short {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-read-term {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-read-term:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.term-modal-content {
+    line-height: 1.8;
+}
+
+.term-modal-content h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+}
+
+.term-modal-content ul,
+.term-modal-content ol {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.term-modal-content li {
+    margin-bottom: 5px;
+}
+
+.term-modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.term-modal-content th,
+.term-modal-content td {
+    border: 1px solid var(--gray-200);
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.term-modal-content th {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+    .terms-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .terms-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+// ===== Стили и цвета шапки Услуги =====
+/* ===== АУТСОРСИНГ ВЭД ===== */
+.outsourcing-header {
+    margin-bottom: 40px;
+}
+
+.outsourcing-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Сетка преимуществ */
+.advantages-section {
+    margin-bottom: 30px;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.advantage-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px 20px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 82, 164, 0.1);
+    border-color: var(--primary-blue);
+}
+
+.advantage-card i {
+    font-size: 32px;
+    color: var(--primary-blue);
+    margin-bottom: 16px;
+}
+
+.advantage-card p {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+    line-height: 1.4;
+}
+
+/* Текст */
+.outsourcing-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.outsourcing-footer {
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-dark);
+}
+
+/* Список услуг */
+.services-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 20px;
+}
+
+.services-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+.services-list i {
+    color: var(--primary-blue);
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+/* Типы контрактов */
+.contract-types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.contract-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: var(--gray-50);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.contract-item:hover {
+    background: var(--white);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.contract-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.contract-content h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+}
+
+.contract-content p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Процесс (таймлайн) */
+.process-timeline {
+    max-width: 600px;
+}
+
+.process-step {
+    display: flex;
+    gap: 20px;
+    padding: 16px 0;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.step-content p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    padding-top: 8px;
+}
+
+.process-arrow {
+    margin-left: 20px;
+    color: var(--primary-blue);
+    font-size: 14px;
+}
+
+/* Список документов */
+.docs-list {
+    list-style: none;
+}
+
+.docs-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+.docs-list li:last-child {
+    border-bottom: none;
+}
+
+.docs-list i {
+    color: var(--accent-red);
+    font-size: 18px;
+    width: 24px;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .services-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .contract-types {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+}

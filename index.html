@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <div class="ticker-wrapper">
+    <div class="ticker" id="currencyTicker">
+        <span class="ticker-item">💰 Загрузка курсов...</span>
+    </div>
+</div>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТЭК Карго Транс | Таможенное оформление 2026</title>
@@ -10,6 +16,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- БЕГУЩАЯ СТРОКА С КУРСАМИ ВАЛЮТ -->
+<div class="ticker-wrapper">
+    <div class="ticker" id="currencyTicker">
+        <span class="ticker-item"><i class="fas fa-circle" style="color: #10b981; font-size: 8px;"></i> Загрузка курсов...</span>
+    </div>
+</div>
 
 <!-- ШАПКА (glassmorphism + неон) -->
 <header class="header">
@@ -36,9 +49,9 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link">Услуги <i class="fas fa-chevron-down"></i></a>
+                    <a href="#" class="nav-link"> Услуги <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown-menu dropdown-menu-wide">
-                        <a href="#">Аутсорсинг ВЭД</a>
+                        <a href="#" class="dropdown-item" data-page="outsourcing">Аутсорсинг ВЭД</a>
                         <a href="#">Международные перевозки</a>
                         <a href="#">Таможенный консалтинг</a>
                         <a href="#">Склад временного хранения</a>
@@ -49,7 +62,7 @@
                     </div>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link" data-page="prices">Цены</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Терминалы</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-page="terms">Термины</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-page="contacts">Контакты</a></li>
             </ul>
         </nav>
@@ -76,7 +89,7 @@
             </h1>
             <p class="hero-subtitle">
                 Полный спектр финансовых, логистических и таможенных услуг. 
-                Организация поставок «под ключ» с использованием AI-технологий.
+                Организация поставок «под ключ»
             </p>
             <div class="hero-buttons">
                 <a href="#" class="btn-primary">
@@ -133,7 +146,7 @@
 <footer class="footer">
     <div class="container footer-inner">
         <div class="footer-copyright">
-            © 1999–2026 ТЭК Карго Транс. Таможенное оформление будущего.
+            © 2009–2026 ТЭК Карго Транс. Таможенное оформление реального времени.
         </div>
         <div class="footer-links">
             <a href="#">Политика конфиденциальности</a>
@@ -156,6 +169,191 @@
 </div>
 
 <script>
+
+    // ===== 1. КУРСЫ ВАЛЮТ (ПРОСТОЙ И РАБОЧИЙ) =====
+    async function loadCurrencyRates() {
+        const ticker = document.getElementById('currencyTicker');
+        if (!ticker) return;
+        
+        try {
+            const response = await fetch('https://www.cbr-xml-daily.ru/daily_json.js');
+            const data = await response.json();
+            
+            const usd = data.Valute.USD.Value.toFixed(2);
+            const eur = data.Valute.EUR.Value.toFixed(2);
+            const cny = data.Valute.CNY.Value.toFixed(2);
+            
+            const prevUsd = data.Valute.USD.Previous;
+            const prevEur = data.Valute.EUR.Previous;
+            const prevCny = data.Valute.CNY.Previous;
+            
+            const usdUp = usd > prevUsd;
+            const eurUp = eur > prevEur;
+            const cnyUp = cny > prevCny;
+            
+            ticker.innerHTML = `
+                <span class="ticker-item"><i class="fas fa-dollar-sign"></i> USD <strong>${usd} ₽</strong> <span style="color: ${usdUp ? '#10b981' : '#ef4444'};">${usdUp ? '▲' : '▼'}</span></span>
+                <span class="ticker-item"><i class="fas fa-euro-sign"></i> EUR <strong>${eur} ₽</strong> <span style="color: ${eurUp ? '#10b981' : '#ef4444'};">${eurUp ? '▲' : '▼'}</span></span>
+                <span class="ticker-item"><i class="fas fa-yen-sign"></i> CNY <strong>${cny} ₽</strong> <span style="color: ${cnyUp ? '#10b981' : '#ef4444'};">${cnyUp ? '▲' : '▼'}</span></span>
+                <span class="ticker-item"><i class="fas fa-clock"></i> ${new Date().toLocaleTimeString('ru-RU')}</span>
+                <span class="ticker-item"><i class="fas fa-check-circle" style="color: #10b981;"></i> Таможня 24/7</span>
+                <span class="ticker-item"><i class="fas fa-truck"></i> Доставка из Китая</span>
+                <span class="ticker-item"><i class="fas fa-shield-alt"></i> Страхование</span>
+                <span class="ticker-item"><i class="fas fa-dollar-sign"></i> USD <strong>${usd} ₽</strong> <span style="color: ${usdUp ? '#10b981' : '#ef4444'};">${usdUp ? '▲' : '▼'}</span></span>
+                <span class="ticker-item"><i class="fas fa-euro-sign"></i> EUR <strong>${eur} ₽</strong> <span style="color: ${eurUp ? '#10b981' : '#ef4444'};">${eurUp ? '▲' : '▼'}</span></span>
+                <span class="ticker-item"><i class="fas fa-yen-sign"></i> CNY <strong>${cny} ₽</strong> <span style="color: ${cnyUp ? '#10b981' : '#ef4444'};">${cnyUp ? '▲' : '▼'}</span></span>
+                <span class="ticker-item"><i class="fas fa-clock"></i> ${new Date().toLocaleTimeString('ru-RU')}</span>
+                <span class="ticker-item"><i class="fas fa-check-circle" style="color: #10b981;"></i> Таможня 24/7</span>
+                <span class="ticker-item"><i class="fas fa-truck"></i> Доставка из Китая</span>
+                <span class="ticker-item"><i class="fas fa-shield-alt"></i> Страхование</span>
+            `;
+        } catch (error) {
+            console.error('Ошибка курсов:', error);
+            ticker.innerHTML = '<span class="ticker-item">💰 USD 92.45 ₽</span><span class="ticker-item">💶 EUR 100.31 ₽</span><span class="ticker-item">🇨🇳 CNY 12.67 ₽</span><span class="ticker-item">📞 Звоните: +7 (800) 555-35-35</span>'.repeat(3);
+        }
+    }
+
+    // ===== 2. ПЛАВАЮЩИЕ ЧАСТИЦЫ =====
+    function initParticles() {
+        if (document.getElementById('particlesCanvas')) return;
+        
+        const canvas = document.createElement('canvas');
+        canvas.id = 'particlesCanvas';
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;';
+        document.body.prepend(canvas);
+        
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            createParticles();
+        }
+        
+        function createParticles() {
+            const count = Math.min(Math.floor(width * height / 20000), 60);
+            particles = [];
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 2 + 0.5,
+                    sx: (Math.random() - 0.5) * 0.2,
+                    sy: (Math.random() - 0.5) * 0.2,
+                    o: Math.random() * 0.3 + 0.1
+                });
+            }
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(59, 130, 246, ${p.o})`;
+                ctx.fill();
+                p.x += p.sx;
+                p.y += p.sy;
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+            });
+            requestAnimationFrame(draw);
+        }
+        
+        resize();
+        draw();
+        window.addEventListener('resize', resize);
+    }
+
+    // ===== 3. ПАРАЛЛАКС =====
+    function initParallax() {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        
+        document.addEventListener('mousemove', function(e) {
+            const x = (window.innerWidth / 2 - e.pageX) / 60;
+            const y = (window.innerHeight / 2 - e.pageY) / 60;
+            hero.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        
+        hero.addEventListener('mouseleave', function() {
+            hero.style.transform = 'translate(0, 0)';
+        });
+    }
+
+    // ===== 4. СЧЁТЧИК ДЕКЛАРАЦИЙ =====
+    function initCounter() {
+        const heroStats = document.querySelector('.hero-stats');
+        if (!heroStats || document.querySelector('.counter-section')) return;
+        
+        const html = `
+            <div class="counter-section">
+                <div class="counter-item">
+                    <div class="counter-number" id="declarationsCounter">0</div>
+                    <div class="counter-label">деклараций оформлено с 1999 года</div>
+                </div>
+            </div>
+        `;
+        heroStats.insertAdjacentHTML('afterend', html);
+        
+        const el = document.getElementById('declarationsCounter');
+        if (!el) return;
+        
+        const target = 127843;
+        let current = 0;
+        const step = Math.ceil(target / 80);
+        
+        const timer = setInterval(function() {
+            current += step;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            el.textContent = current.toLocaleString('ru-RU');
+        }, 25);
+    }
+
+    // ===== 5. ПЛАШКА ОНЛАЙН =====
+    function initOnlineBadge() {
+        const el = document.getElementById('onlineCount');
+        if (!el) return;
+        
+        function update() {
+            el.textContent = Math.floor(Math.random() * 8) + 2;
+        }
+        update();
+        setInterval(update, 15000);
+    }
+
+    // ===== ЗАПУСК ВСЕГО =====
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Запуск фич...');
+        
+        // Курсы валют
+        loadCurrencyRates();
+        setInterval(loadCurrencyRates, 300000);
+        
+        // Частицы
+        initParticles();
+        
+        // Параллакс и счётчик (с задержкой, чтобы DOM успел)
+        setTimeout(function() {
+            initParallax();
+            initCounter();
+        }, 200);
+        
+        // Онлайн
+        initOnlineBadge();
+        
+        console.log('Готово!');
+    });
+
     // ===== ДАННЫЕ ПРОЕКТОВ =====
     const projectsData = [
         {
@@ -237,6 +435,8 @@
     ];
 
     // ===== ФУНКЦИИ КОНТЕНТА =====
+
+
 
     function getCalculatorHTML() {
     return `
@@ -506,6 +706,405 @@ function getPricesHTML() {
         </div>
     `;
 }
+// ===== ДАННЫЕ ТЕРМИНОВ (7 ШТУК) =====
+const termsData = [
+    
+    {
+        number: '01',
+        title: 'Виды грузовых перевозок',
+        shortDesc: 'Водный, воздушный, железнодорожный и автомобильный транспорт.',
+        fullText: `
+            <p>К основным видам перевозок грузов относят грузоперевозки по воде, по воздуху, по суше. Каждый из указанных случаев может быть реализован определенным транспортным средством.</p>
+            <h4>🚢 Грузоперевозки водным видом транспорта</h4>
+            <p>Транспортные услуги в сфере морских и речных грузоперевозок – это наиболее экологически чистый вариант доставки грузов. Такой вид грузовых перевозок является приоритетным при обмене сырьём и товарами на международном уровне. Внутри страны развитию водной транспортировки грузов способствует природное богатство большими реками и каналами.</p>
+            <p>Важно отметить, что этот вид транспортных перевозок является наиболее сложным в организации. Он требует немалого количества энергетических и трудозатрат, является самым медленным из всех возможных вариантов. Но компенсацией служит обширность географии перевозок и очень низкая их стоимость.</p>
+            <h4>✈️ Перевозка грузов воздушным видом транспорта</h4>
+            <p>У грузоотправителей часто возникают ситуации, когда необходимо выполнить доставку за предельно короткий срок на дальние расстояния. В этом случае незаменим авиатранспорт. Данный вид грузоперевозки является самым дорогостоящим, но если сроки «поджимают», то лучше воспользоваться им.</p>
+            <h4>🚂 Доставка грузов железнодорожным видом транспорта</h4>
+            <p>Одна из самых протяженных в мире сетей железных дорог принадлежит России. Через нашу страну проходят кратчайшие транспортные маршруты между Европой и Азией. Неоспоримым преимуществом является возможность доставки крупногабаритных, негабаритных, массовых и особорежимных грузов. Этот вид грузоперевозок доступен в любое время года.</p>
+            <h4>🚛 Автотранспортные услуги</h4>
+            <p>Перевозка автомобильным транспортом в ряде случаев является наиболее выгодной. Такой вариант позволяет соединить два пункта «от отправителя – до получателя» без дополнительных погрузок/разгрузок, что уменьшает риск повреждения груза, увеличивает скорость перевозки, а также сокращает общую стоимость.</p>
+        `
+    },
+    {
+        number: '02',
+        title: 'Таможенный кодекс ЕАЭС',
+        shortDesc: 'Виды декларирования товаров согласно ст. 105 ТК ЕАЭС.',
+        fullText: `
+            <p>Таможенный кодекс Евразийского экономического союза (ЕАЭС) предусматривает следующие виды декларирования товаров (ст. 105 ТК ЕАЭС):</p>
+            <ul>
+                <li><strong>Декларация на товары</strong> — при помещении товаров под таможенные процедуры, за исключением таможенного транзита.</li>
+                <li><strong>Транзитная декларация</strong> — при помещении товаров под таможенную процедуру таможенного транзита.</li>
+                <li><strong>Пассажирская таможенная декларация</strong> — при декларировании товаров для личного пользования.</li>
+                <li><strong>Декларация на транспортное средство</strong> — при декларировании транспортных средств международной перевозки.</li>
+            </ul>
+        `
+    },
+    {
+        number: '03',
+        title: 'Инкотермс (Incoterms)',
+        shortDesc: 'Международные правила толкования торговых терминов.',
+        fullText: `
+            <p>Инкотермс (International commerce terms) – товарный знак Международной торговой палаты. Это свод правил с терминами, применяющийся в национальной и международной торговле.</p>
+            <p>11 терминов Инкотермс 2010 распределены на 2 группы:</p>
+            <h4>Правила для любого вида транспорта:</h4>
+            <ul>
+                <li><strong>EXW</strong> – Франко завод</li>
+                <li><strong>FCA</strong> – Франко перевозчик</li>
+                <li><strong>CPT</strong> – Перевозка оплачена до</li>
+                <li><strong>CIP</strong> – Перевозка и страхование оплачены до</li>
+                <li><strong>DAT</strong> – Поставка на терминале</li>
+                <li><strong>DAP</strong> – Поставка в месте назначения</li>
+                <li><strong>DDP</strong> – Поставка с оплатой пошлин</li>
+            </ul>
+            <h4>Правила для морского и речного транспорта:</h4>
+            <ul>
+                <li><strong>FAS</strong> – Свободно вдоль борта судна</li>
+                <li><strong>FOB</strong> – Свободно на борту</li>
+                <li><strong>CFR</strong> – Стоимость и фрахт</li>
+                <li><strong>CIF</strong> – Стоимость, страхование и фрахт</li>
+            </ul>
+        `
+    },
+    {
+        number: '04',
+        title: 'Классификатор условий поставки',
+        shortDesc: 'Коды и наименования условий поставки товаров.',
+        fullText: `
+            <table style="width:100%;border-collapse:collapse;">
+                <tr><th>Код</th><th>Наименование</th><th>Географический пункт</th></tr>
+                <tr><td>EXW</td><td>ФРАНКО-ЗАВОД</td><td>Местонахождение завода</td></tr>
+                <tr><td>FCA</td><td>ФРАНКО-ПЕРЕВОЗЧИК</td><td>Указанное место</td></tr>
+                <tr><td>FAS</td><td>СВОБОДНО ВДОЛЬ БОРТА СУДНА</td><td>Указанный порт погрузки</td></tr>
+                <tr><td>FOB</td><td>СВОБОДНО НА БОРТУ СУДНА</td><td>Указанный порт погрузки</td></tr>
+                <tr><td>CFR</td><td>СТОИМОСТЬ И ФРАХТ</td><td>Указанный порт назначения</td></tr>
+                <tr><td>CIF</td><td>СТОИМОСТЬ, СТРАХОВАНИЕ И ФРАХТ</td><td>Указанный порт назначения</td></tr>
+                <tr><td>CPT</td><td>ПЕРЕВОЗКА ОПЛАЧЕНА ДО</td><td>Указанное место назначения</td></tr>
+                <tr><td>CIP</td><td>ПЕРЕВОЗКА И СТРАХОВАНИЕ ОПЛАЧЕНЫ ДО</td><td>Указанное место назначения</td></tr>
+                <tr><td>DDP</td><td>ПОСТАВКА С ОПЛАТОЙ ПОШЛИНЫ</td><td>Указанное место назначения</td></tr>
+            </table>
+        `
+    },
+    {
+        number: '05',
+        title: 'Классификация опасных грузов',
+        shortDesc: 'Классы опасности грузов и веществ ADR / АДР.',
+        fullText: `
+            <p>ГОСТ 19433-88 определяет классы и классификацию опасных грузов и веществ.</p>
+            <ul>
+                <li><strong>1 класс</strong> — взрывчатые материалы (ВМ)</li>
+                <li><strong>2 класс</strong> — газы сжатые, сжиженные и растворенные под давлением</li>
+                <li><strong>3 класс</strong> — легковоспламеняющиеся жидкости (ЛВЖ)</li>
+                <li><strong>4 класс</strong> — легковоспламеняющиеся твердые грузы и вещества (ЛВТ); самовозгорающиеся (СВ); выделяющие воспламеняющиеся газы при взаимодействии с водой</li>
+                <li><strong>5 класс</strong> — окисляющие вещества (ОК) и органические пероксиды (ОП)</li>
+                <li><strong>6 класс</strong> — ядовитые вещества (ЯВ) и инфекционные грузы и вещества (ИВ)</li>
+                <li><strong>7 класс</strong> — радиоактивные материалы (РМ)</li>
+                <li><strong>8 класс</strong> — едкие и (или) коррозионные грузы и вещества (ЕК)</li>
+                <li><strong>9 класс</strong> — прочие опасные грузы и вещества</li>
+            </ul>
+        `
+    },
+    {
+        number: '06',
+        title: 'Классификатор таможенных режимов',
+        shortDesc: 'Виды таможенных процедур и их особенности.',
+        fullText: `
+            <p>Таможенная процедура — это выбранный декларантом способ пользования и распоряжения товарами на таможенной территории Таможенного союза и за её пределами.</p>
+            <p>Таможенный кодекс Таможенного союза в статье 202 предусмотрел 17 видов таможенных процедур:</p>
+            <ul>
+                <li>Выпуск для внутреннего потребления</li>
+                <li>Экспорт</li>
+                <li>Таможенный транзит</li>
+                <li>Таможенный склад</li>
+                <li>Переработка на таможенной территории</li>
+                <li>Переработка вне таможенной территории</li>
+                <li>Переработка для внутреннего потребления</li>
+                <li>Временный ввоз</li>
+                <li>Временный вывоз</li>
+                <li>Реимпорт</li>
+                <li>Реэкспорт</li>
+                <li>Беспошлинная торговля</li>
+                <li>Уничтожение</li>
+                <li>Отказ в пользу государства</li>
+                <li>Свободная таможенная зона</li>
+                <li>Свободный склад</li>
+                <li>Специальная таможенная процедура</li>
+            </ul>
+        `
+    },
+    {
+        number: '07',
+        title: 'Таможенные процедуры',
+        shortDesc: 'Полный перечень и описание таможенных процедур.',
+        fullText: `
+            <p>Понятие таможенной процедуры было введено таможенным кодексом Таможенного союза, ранее в таможенном законодательстве был термин таможенные режимы.</p>
+            <p>Декларант вынужден поместить перемещаемый через таможенную границу товар под одну из существующих таможенных процедур. Он вправе выбрать любую таможенную процедуру или изменить ее на иную, но с соблюдением ее условий.</p>
+            <p>Таможенный кодекс Таможенного союза в статье 202 предусмотрел 17 видов таможенных процедур. Подробное описание каждой процедуры доступно в соответствующем разделе.</p>
+        `
+    }
+];
+
+function attachTermEvents() {
+    document.querySelectorAll('.term-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Не открываем, если кликнули по кнопке
+            if (e.target.closest('.btn-read-term')) return;
+            const index = this.dataset.termIndex;
+            if (index !== undefined) openTermModal(parseInt(index));
+        });
+    });
+    
+    document.querySelectorAll('.btn-read-term').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const card = this.closest('.term-card');
+            if (card) {
+                const index = card.dataset.termIndex;
+                if (index !== undefined) openTermModal(parseInt(index));
+            }
+        });
+    });
+}
+
+function openTermModal(index) {
+    const term = termsData[index];
+    if (!term) return;  // ← исправлено: было if (term) return;
+    
+    const modal = document.getElementById('projectModal');
+    modal.querySelector('.modal-title').textContent = term.title;
+    modal.querySelector('.modal-body').innerHTML = `
+        <div class="term-modal-content">
+            ${term.fullText}
+        </div>
+        <button class="btn-close-modal" onclick="closeModal()">
+            <i class="fas fa-arrow-left"></i> Назад к терминам
+        </button>
+    `;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function getTermsHTML() {
+    let html = '<h1 class="page-title animate-fadeInUp">Термины ВЭД</h1><div class="terms-grid">';
+    termsData.forEach((term, index) => {
+        html += `
+            <div class="term-card animate-fadeInUp" style="animation-delay: ${index * 0.05}s;" data-term-index="${index}">
+                <span class="term-number">${term.number}</span>
+                <h3 class="term-title">${term.title}</h3>
+                <p class="term-short">${term.shortDesc}</p>
+                <button class="btn-read-term">
+                    <i class="fas fa-book-open"></i> Читать
+                </button>
+            </div>
+        `;
+    });
+    html += '</div>';
+    return html;
+}
+
+function getOutsourcingHTML() {
+    return `
+        <!-- Хлебные крошки -->
+        <div class="breadcrumbs">
+            <a href="#" data-page="contacts">Главная</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="#">Услуги</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Аутсорсинг ВЭД</span>
+        </div>
+        
+        <!-- Заголовок и кнопка -->
+        <div class="outsourcing-header animate-fadeInUp">
+            <h1 class="page-title">Аутсорсинг ВЭД</h1>
+            <p class="outsourcing-subtitle">
+                Предоставляем импортёрам и поставщикам в России полный спектр финансовых, 
+                логистических, таможенных услуг. Специализируемся на организации поставок 
+                товаров «под ключ» с 1999 года.
+            </p>
+            <a href="#" class="btn-primary" data-page="calculator">
+                <i class="fas fa-pen"></i> Заполнить заявку
+            </a>
+        </div>
+        
+        <!-- Преимущества (7 карточек) -->
+        <div class="advantages-section animate-fadeInUp" style="animation-delay: 0.1s;">
+            <h2 class="section-title">Преимущества</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <p>Более 25-ти лет успешных лет на рынке таможенных услуг</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-user-check"></i>
+                    <p>Индивидуальный подход к каждому клиенту</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-warehouse"></i>
+                    <p>СВХ, ТС, Маркировка ЧЗ</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-file-signature"></i>
+                    <p>Многолетний опыт таможенных операций и декларирования</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-comments"></i>
+                    <p>Ответы и решения на все вопросы</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-truck"></i>
+                    <p>Автомобильные, морские, ж/д перевозки</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-gavel"></i>
+                    <p>Представление интересов клиента в таможенных и судебных органах</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Основной текст -->
+        <div class="content-card animate-fadeInUp" style="animation-delay: 0.15s;">
+            <p class="outsourcing-text">
+                <strong>Аутсорсинг ВЭД</strong> представляет собой передачу части связанных с 
+                внешнеэкономической деятельностью процессов специалистам компании, что позволяет 
+                передать ответственность за управление внешнеэкономическими операциями профессионалам, 
+                которые оказывают не только техническое, но и юридическое сопровождение сделок.
+            </p>
+            <p class="outsourcing-text">
+                Наша компания предлагает услуги по аутсорсингу внешнеэкономической деятельности (ВЭД). 
+                Мы поможем оптимизировать ваши бизнес-процессы и повысить эффективность работы на 
+                международных и внутренних рынках. Предоставляем импортерам и поставщикам в России 
+                полный спектр финансовых, логистических и таможенных услуг. Специализируемся на 
+                организации поставок «под ключ» с 1999 года.
+            </p>
+        </div>
+        
+        <!-- Комплекс услуг -->
+        <div class="content-card animate-fadeInUp" style="animation-delay: 0.2s;">
+            <h3 class="card-heading">
+                <i class="fas fa-list-check"></i> 
+                В рамках оказания услуги Аутсорсинг ВЭД, мы предлагаем комплекс услуг:
+            </h3>
+            <ul class="services-list">
+                <li><i class="fas fa-check-circle"></i> организуем и проведём переговоры с зарубежными производителями;</li>
+                <li><i class="fas fa-check-circle"></i> поможем в составлении и заключении внешнеторговых контрактов с поставщиками;</li>
+                <li><i class="fas fa-check-circle"></i> осуществим финансовые операции по договорам;</li>
+                <li><i class="fas fa-check-circle"></i> поможем пройти валютный контроль;</li>
+                <li><i class="fas fa-check-circle"></i> доставим товары на склады из любой точки мира;</li>
+                <li><i class="fas fa-check-circle"></i> окажем складские услуги;</li>
+                <li><i class="fas fa-check-circle"></i> окажем транспортно-экспедиционное обслуживание, как на территории РФ, так и международные перевозки;</li>
+                <li><i class="fas fa-check-circle"></i> оформим и передадим в соответствующие органы необходимые документы;</li>
+                <li><i class="fas fa-check-circle"></i> выполним маркировку товара в системе «Честный знак»;</li>
+                <li><i class="fas fa-check-circle"></i> оплатим таможенные платежи;</li>
+                <li><i class="fas fa-check-circle"></i> окажем юридическое сопровождение ВЭД.</li>
+            </ul>
+            <p class="outsourcing-footer">
+                Мы будем рады стать вашим надёжным партнёром в сфере ВЭД и помочь вам достичь новых высот в бизнесе.
+            </p>
+        </div>
+        
+        <!-- Типы контрактов -->
+        <div class="content-card animate-fadeInUp" style="animation-delay: 0.25s;">
+            <h3 class="card-heading"><i class="fas fa-file-contract"></i> Типы контрактов:</h3>
+            <div class="contract-types">
+                <div class="contract-item">
+                    <div class="contract-icon"><i class="fas fa-globe"></i></div>
+                    <div class="contract-content">
+                        <h4>Внешнеторговый (импорт, экспорт)</h4>
+                        <p>Возможны колебания из-за валютных курсов.</p>
+                    </div>
+                </div>
+                <div class="contract-item">
+                    <div class="contract-icon"><i class="fas fa-file-invoice"></i></div>
+                    <div class="contract-content">
+                        <h4>Классический договор поставки</h4>
+                        <p>Затраты выставляются по фактическим расходам плюс наценка.</p>
+                    </div>
+                </div>
+                <div class="contract-item">
+                    <div class="contract-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="contract-content">
+                        <h4>Агентский договор</h4>
+                        <p>Все счета выставляются 1:1 плюс агентское вознаграждение.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Обзор основных процессов -->
+        <div class="content-card animate-fadeInUp" style="animation-delay: 0.3s;">
+            <h3 class="card-heading"><i class="fas fa-diagram-project"></i> Обзор основных процессов</h3>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <p>Заказчик выбирает товар за рубежом и находит поставщика в любой стране.</p>
+                    </div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-down"></i></div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <p>Предоставляет информацию о товаре, условиях поставки и оплате.</p>
+                    </div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-down"></i></div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <p>Расчёт бюджета и согласование с заказчиком.</p>
+                    </div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-down"></i></div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <p>Заключение контракта с зарубежным поставщиком.</p>
+                    </div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-down"></i></div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <p>Перевод средств и покупка товара.</p>
+                    </div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-down"></i></div>
+                
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <p>Таможенное оформление, электронное декларирование.</p>
+                    </div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-down"></i></div>
+                
+                <div class="process-step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <p>Выпущенный для внутреннего потребления товар доставляется на склад заказчика.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Документы -->
+        <div class="content-card animate-fadeInUp" style="animation-delay: 0.35s;">
+            <h3 class="card-heading"><i class="fas fa-folder-open"></i> Документы, которые могут потребоваться</h3>
+            <ul class="docs-list">
+                <li><i class="fas fa-file-alt"></i> Коммерческие документы: контракт, спецификация, инвойс</li>
+                <li><i class="fas fa-certificate"></i> Разрешительные документы, необходимые для ввоза/вывоза товара</li>
+                <li><i class="fas fa-truck-loading"></i> Транспортные (перевозочные) документы: транспортная накладная, упаковочный лист</li>
+                <li><i class="fas fa-clipboard-check"></i> Документы, подтверждающие характеристики товара</li>
+                <li><i class="fas fa-globe-americas"></i> Документы о происхождении товара</li>
+                <li><i class="fas fa-balance-scale"></i> И другие документы, в соответствии с действующим таможенным законодательством ЕАЭС</li>
+            </ul>
+        </div>
+    `;
+}
 
     function getContactsHTML() {
         return `
@@ -614,6 +1213,22 @@ function getPricesHTML() {
         document.body.style.overflow = '';
         
         switch(page) {
+
+case 'outsourcing':
+    mainContent.innerHTML = getOutsourcingHTML();
+    heroSection.style.display = 'none';
+    breadcrumbsContainer.style.display = 'none'; // хлебные крошки уже внутри
+    break;
+
+case 'terms':
+    mainContent.innerHTML = getTermsHTML();
+    if (heroSection) heroSection.style.display = 'none';
+    breadcrumbsContainer.style.display = 'block';
+    breadParent.textContent = 'Справочник';
+    breadCurrent.textContent = 'Термины ВЭД';
+    setTimeout(() => attachTermEvents(), 50);  // ← исправлено
+    break;
+
             case 'calculator':
     mainContent.innerHTML = getCalculatorHTML();
     if (heroSection) heroSection.style.display = 'none';
@@ -630,7 +1245,7 @@ case 'prices':
     if (breadParent) breadParent.textContent = 'Услуги';
     if (breadCurrent) breadCurrent.textContent = 'Цены';
     break;
-    
+
             case 'contacts':
                 mainContent.innerHTML = getContactsHTML();
                 if (heroSection) heroSection.style.display = 'block';
@@ -797,6 +1412,17 @@ case 'prices':
         window.closeModal = closeModal;
     });
 </script>
+
+<!-- ПЛАШКА СЕЙЧАС ОНЛАЙН -->
+<div class="online-badge" id="onlineBadge">
+    <span class="online-dot"></span>
+    <span class="online-text"><span id="onlineCount">3</span> человека рассчитывают доставку</span>
+</div>
+
+<div class="online-badge" id="onlineBadge">
+    <span class="online-dot"></span>
+    <span class="online-text"><span id="onlineCount">3</span> человека рассчитывают доставку</span>
+</div>
 
 /body
 /html
