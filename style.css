@@ -2374,7 +2374,6 @@ body {
     }
 }
 
-// ===== Стили и цвета шапки Услуги =====
 /* ===== АУТСОРСИНГ ВЭД ===== */
 .outsourcing-header {
     margin-bottom: 40px;
@@ -2591,4 +2590,62 @@ body {
     .advantages-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.term-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.term-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    opacity: 0.1;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+.term-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--primary-dark);
+}
+
+.term-short {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+    flex: 1;
+}
+
+.btn-read-term {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    width: fit-content;
+}
+
+.btn-read-term:hover {
+    background: var(--primary-blue);
+    color: white;
 }
